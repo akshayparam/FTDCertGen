@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>Fuel Their Dream - Certificate Generator</title>
+         <style>
+         body {
+        margin: 0;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 20px;
+        line-height: 20px;
+        color: #333;
+        background-color: #fff;
+  padding-left: 15px;
+    }
+    
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+ .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    
+    .btn-default {
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+</style>
+ <script src=
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+  </script>
+  
+
+
+<script type="text/javascript">
+  function getVal() {
+  const val = document.querySelector('input').value;
+  document.getElementById('output').innerHTML = val;;
+}
+
+
+function capture() {
+    const captureElement = document.querySelector('#capture')
+    html2canvas(captureElement)
+        .then(canvas => {
+            canvas.style.display = 'none'
+            document.body.appendChild(canvas)
+            return canvas
+        })
+        .then(canvas => {
+            const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
+            const a = document.createElement('a')
+            a.setAttribute('download', 'my-image.png')
+            a.setAttribute('href', image)
+            a.click()
+            canvas.remove()
+        })
+}
+
+
+
+
+
+
+</script>
+
+    </head>
+    <body>
+      
+        <form>
+        <p style="color:black">Enter Donor Name:  </p>
+        <input type="text" placeholder="Enter Donor Name" onblur="getVal()">
+        <input type="button" value="Generate!" onclick=getVal() class="btn btn-default"> 
+        </form>
+        
+        
+       
+       <div class="container" id="capture">
+        <img src="certificate.png" alt="Certificate" style="width:50%;">
+        <div class="centered">  <p style="color:black" Id="output"></p></div>
+  
+       
+</div>
+<p align=center>
+<button type="button" class="btn btn-default" id="btn" onclick=capture()>Save Certificate</button>
+</p>
+
+    </body>
+    
+</html>

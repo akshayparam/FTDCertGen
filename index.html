@@ -60,12 +60,16 @@
 function getVal() {
   const val = document.querySelector('#NameOnCert').value
   document.getElementById('output').innerHTML = val;;
+  
  capture()
 }
 
 
 function capture() {
     const captureElement = document.querySelector('#capture')
+    const Nval = document.querySelector('#NameOnCert').value
+    Nval2 = Nval.concat("_certificate.jpg")
+            
     html2canvas(captureElement)
         .then(canvas => {
             canvas.style.display = 'none'
@@ -75,8 +79,8 @@ function capture() {
         .then(canvas => {
             const image = canvas.toDataURL('image/jpg').replace('image/jpg', 'image/octet-stream')
             const a = document.createElement('a')
-           
-            a.setAttribute('download', 'certificate.jpg')
+            
+            a.setAttribute('download', Nval2)
             a.setAttribute('href', image)
            
             a.click()

@@ -66,6 +66,7 @@
   function getVal() {
   const val = document.querySelector('input').value;
   document.getElementById('output').innerHTML = val;;
+  capture()
 }
 
 
@@ -102,11 +103,10 @@ function capture() {
         <form>
         <p style="color:black">Enter Donor Name:  </p>
         <input type="text" placeholder="Enter Donor Name" onblur="getVal()">
-        <input type="button" value="Generate!" onclick=getVal() class="btn btn-default"> 
+        <input type="button" value="Generate and Save!" onclick=getVal() class="btn btn-default"> 
         </form>
         
         
-<button type="button" class="btn btn-default" id="btn" onclick=capture()>Save Certificate</button>
 
        
        <div class="container" id="capture">
